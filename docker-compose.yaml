@@ -1,0 +1,22 @@
+services:
+  front_end:
+    build:
+      context: front-end
+      args:
+        - VITE_BASE_URL=${VITE_BASE_URL}
+    ports:
+      - 8080:80
+    networks:
+      - my_network
+    depends_on:
+      - back_end
+  back_end:
+    build:
+      context: back-end
+    ports:
+      - 3000:3000
+    networks:
+      - my_network
+networks:
+  my_network:
+    driver: bridge

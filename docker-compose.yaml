@@ -14,9 +14,11 @@ services:
     build:
       context: back-end
     ports:
-      - 3000:3000
+      - ${PORT}:${PORT}
     networks:
       - my_network
+    env_file:
+      - ".env"
 networks:
   my_network:
     driver: bridge
